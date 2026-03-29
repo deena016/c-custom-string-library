@@ -1,0 +1,27 @@
+1.  Which part(s) of the object are stored in heap memory?
+        The MY_STRING struct is stored in heap memory using malloc().
+        The character array strData that stores the string’s characters
+        is also stored on the heap.
+2.  How many bytes of memory are used for the string "Hello"?
+        The string "Hello" uses 5 bytes because the program stores only the
+        visible characters and doesn't include the null terminator.
+3.  List all places in the code that deal with heap memory.
+        - malloc() in CreateString() to allocate memory for the MY_STRING object
+        - malloc() in CreateString() to allocate memory for the string data
+        (strData)
+        - realloc() in AppendChar() to make the string bigger
+        - realloc() in TrimAt() to make the string smaller
+        - free() in TrimAt() when trimming the entire string
+        - free() in DeleteString() to release strData
+        - free() in DeleteString() to release the MY_STRING object
+4.  How does your code handle TrimAt(str, 0) with respect to memory?
+        When TrimAt(str, 0) is called, the code frees the memory used by
+        strData, sets the pointer to NULL, and updates the size to 0.
+        This safely removes the entire string.
+5.  How does your code safely handle a call to malloc() or realloc() that fails?
+        The code checks whether malloc() or realloc() returns NULL.
+        If memory allocation fails, the function will return -1 to show
+        failure and won't modify the original data.
+        
+        
+        
